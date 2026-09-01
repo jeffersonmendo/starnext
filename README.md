@@ -1,20 +1,8 @@
 # Starnext
 
-A clean Next.js starter for cloning and building quickly without repeating the same setup for theme, UI primitives, fonts and internationalization.
+A Bun-first Next.js starter for cloned products. It keeps theme, UI primitives, local fonts, and internationalization ready without prescribing product features.
 
-## Stack
-
-- Next.js 16 App Router
-- React 19
-- Tailwind CSS v4
-- shadcn/Base UI
-- next-themes
-- next-intl
-- Geist local fonts via `geist`
-- Biome
-- Bun
-
-## Getting started
+## Quick start
 
 ```bash
 bun install
@@ -23,9 +11,15 @@ bun run dev
 
 Open `http://localhost:3000`.
 
-## Clone and rename this starter
+| Command | Purpose |
+| --- | --- |
+| `bun run dev` | Start the development server. |
+| `bun run build` | Create a production build. |
+| `bun run start` | Start the production server. |
+| `bun run lint` | Run Biome checks. |
+| `bun run format` | Format with Biome. |
 
-Use this when starting a new project from Starnext:
+## Start a product from this repository
 
 ```bash
 git clone <your-starnext-repo-url> my-new-app
@@ -35,124 +29,38 @@ git init
 bun install
 ```
 
-Then rename the project:
+Then:
 
-```txt
-package.json              -> name
-README.md                 -> project title and description
-messages/en.json          -> Metadata title/description
-messages/es.json          -> Metadata title/description
-src/i18n/routing.ts       -> locales/defaultLocale if needed
-```
+- Rename `package.json` and this README.
+- Update `messages/en.json` and `messages/es.json` metadata.
+- Confirm locales and the default locale in `src/i18n/routing.ts`.
+- Replace the starter home with the product entry point.
+- Run `bun run lint` and `bun run build`.
 
-Post-clone checklist:
+The current locale-prefixed routes are `/en` and `/es`. i18n configuration is in `src/i18n/`; `src/proxy.ts` applies locale routing.
 
-- [ ] Rename `package.json`.
-- [ ] Update README title and product description.
-- [ ] Update metadata translations in `messages/*.json`.
-- [ ] Confirm supported locales in `src/i18n/routing.ts`.
-- [ ] Replace the starter home with the real product entry point.
-- [ ] Run `bun run lint`.
-- [ ] Run `bun run build`.
+## UI and theme
 
-## Routes and languages
-
-The app uses locale-prefixed routes:
-
-- `/en`
-- `/es`
-
-Translations live in:
-
-```txt
-messages/en.json
-messages/es.json
-```
-
-i18n configuration lives in:
-
-```txt
-src/i18n/routing.ts
-src/i18n/request.ts
-src/i18n/navigation.ts
-src/proxy.ts
-```
-
-## UI foundation
-
-The starter uses shadcn/Base UI with Tailwind tokens. Shared primitives live in:
-
-```txt
-src/components/ui
-```
-
-Use semantic tokens like `bg-background`, `text-foreground` and `text-muted-foreground` instead of hardcoded colors.
-
-Add new UI components only when a project needs them:
+The project uses Tailwind CSS v4 and shadcn/Base UI. Reuse primitives from `src/components/ui`, use semantic tokens such as `bg-background`, and add a component only when the product needs it:
 
 ```bash
 bunx --bun shadcn@latest add <component>
 ```
 
-Do not preinstall a large component set in the starter. Keep the base small and let each product pull the UI primitives it actually uses.
-
-### Change the shadcn preset
-
-Use the shadcn Create page to pick a preset, then apply its code to the cloned project:
+Use shadcn Create to select a preset, then apply it to the clone. To change only a theme or font, use `--only theme` or `--only font` rather than reinstalling components.
 
 ```bash
 bunx --bun shadcn@latest apply <preset-code>
 ```
 
-Example:
+Geist comes from the local `geist` package and is wired through `src/app/[locale]/layout.tsx` and `src/app/globals.css`; do not replace it with `next/font/google` without a product decision.
 
-```bash
-bunx --bun shadcn@latest apply a2r6bw
-```
+## Engineering guide
 
-If you only want the visual theme or fonts, apply only that part instead of reinstalling UI components:
+- [Product intent](docs/product.md)
+- [Architecture](docs/architecture.md)
+- [Development conventions](docs/development.md)
+- [Stack standards](docs/stack.md)
+- [Agent operating guide](AGENTS.md)
 
-```bash
-bunx --bun shadcn@latest apply a2r6bw --only theme
-bunx --bun shadcn@latest apply a2r6bw --only font
-```
-
-Supported `--only` values are `theme` and `font`.
-
-References:
-
-- [shadcn Create](https://ui.shadcn.com/create) — choose and copy a preset code.
-- [shadcn CLI apply](https://ui.shadcn.com/docs/cli#apply) — apply a preset to an existing project.
-
-## Fonts
-
-The project uses the `geist` package, not `next/font/google`.
-
-Geist is wired through Tailwind CSS variables in:
-
-```txt
-src/app/[locale]/layout.tsx
-src/app/globals.css
-```
-
-## What is intentionally not included
-
-This base starter does not include auth, ORM or database setup by default. Those are project-specific decisions and should be added through future starter variants or a CLI generator.
-
-Recommended future options:
-
-- DB/ORM: Drizzle, Prisma or Supabase
-- Auth: Better Auth, Auth.js, Clerk or Supabase Auth
-
-## Quality checks
-
-```bash
-bun run lint
-bun run build
-```
-
-## Official documentation
-
-- [Next.js docs](https://nextjs.org/docs) — App Router, routing, rendering and deployment.
-- [next-intl docs](https://next-intl.dev/) — translations, locale routing and formatting.
-- [shadcn/ui docs](https://ui.shadcn.com/docs) — component workflow, theming, CLI and examples.
+Auth, a database, and an ORM are intentionally absent. Choose them for the cloned product rather than adding them to this base.

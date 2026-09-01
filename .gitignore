@@ -36,10 +36,12 @@ yarn-error.log*
 # vercel
 .vercel
 
-# local agent metadata
-.agents/
+# project agent skills are versioned; other local agent metadata stays ignored
+.agents/*
+!.agents/skills/
+!.agents/skills/**
 .claude/
-skills-lock.json
+!skills-lock.json
 
 # typescript
 *.tsbuildinfo
