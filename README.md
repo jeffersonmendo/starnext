@@ -55,12 +55,19 @@ bunx --bun shadcn@latest apply <preset-code>
 
 Geist comes from the local `geist` package and is wired through `src/app/[locale]/layout.tsx` and `src/app/globals.css`; do not replace it with `next/font/google` without a product decision.
 
-## Engineering guide
+## Engineering foundation
 
 - [Product intent](docs/product.md)
 - [Architecture](docs/architecture.md)
 - [Development conventions](docs/development.md)
 - [Stack standards](docs/stack.md)
 - [Agent operating guide](AGENTS.md)
+
+Use this navigation when starting a cloned product: define the product, choose its `[DEFINE]` decisions, then implement against the architecture and development conventions. The canonical local agent skills are in `.agents/skills/`:
+
+- `next-best-practices`
+- `vercel-react-best-practices`
+- `typescript-advanced-types`
+- `shadcn`
 
 Auth, a database, and an ORM are intentionally absent. Choose them for the cloned product rather than adding them to this base.

@@ -18,21 +18,24 @@ This is a target, not a request to create empty folders. The current starter has
 
 ## Feature boundary
 
-A feature may contain only the layers it needs:
+A feature may contain any of these layers; none is mandatory. Create a layer only for a real responsibility:
 
 ```txt
 src/features/<feature>/
   components/      # Feature UI and presentational components
-  actions/         # Server actions or client action orchestration
+  actions/         # Feature-owned Next.js Server Actions
+  hooks/            # Client interaction logic
+  helpers/          # Pure feature-local utilities
   services/        # Use cases and application rules
   repositories/    # Data-source contracts/adapters
-  schemas/         # Zod input and boundary schemas
+  schemas/         # Input and boundary schemas (Zod when installed)
   types/           # Feature-owned domain/view types
+  constants/       # Feature concepts with stable names
   mocks/           # Deterministic feature fixtures/fakes
-  hooks/            # Feature hooks
+  tests/           # Feature-focused tests
 ```
 
-Do not add every layer by template. A simple display feature can have only a component and types; add a service or repository when rules or a data source justify the separation.
+Do not add every layer by template. A simple display feature can have only a component and types; add a service or repository when rules or a data source justify the separation. Client interaction logic belongs in components and hooks, not `actions/`.
 
 ## Feature public APIs
 
@@ -54,7 +57,7 @@ Data flows down through typed props. Events and actions flow up through callback
 
 ## External boundaries
 
-Repositories isolate database or remote persistence details. Services coordinate business rules. Actions and route handlers validate input, authenticate and authorize where applicable, call a service, and return a deliberate result. Provider SDKs (payments, email, storage, analytics) stay behind adapters in `lib` or a feature repository/service; do not spread SDK calls through components.
+Repositories isolate database or remote persistence details. Services coordinate business rules. Actions and route handlers validate input, authenticate and authorize where applicable, call a service, and return a deliberate result. Provider SDKs (Stripe payments, Resend email, storage, analytics) stay behind adapters in `lib` or a feature repository/service; do not spread SDK calls through components.
 
 Schemas validate all untrusted boundaries: form input, URL data, server actions, route handlers, webhooks, and external responses. Infer application types from schemas where that removes duplication; do not trust client validation alone.
 

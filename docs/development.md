@@ -8,15 +8,19 @@ Follow these conventions for every product cloned from Starnext. Prefer the simp
 | --- | --- |
 | Files and directories | `kebab-case` (`invoice-list.tsx`) |
 | React components and types | `PascalCase` (`InvoiceList`, `Invoice`) |
-| Functions and actions | `camelCase` (`createInvoice`, `handleSubmit`) |
+| Functions, internal handlers, and Server Actions | `camelCase` (`createInvoice`, `handleSubmit`) |
 | Variables and internal object keys | `snake_case` (`invoice_total`) |
 | Application-owned JSON keys | `snake_case` |
+| Condition booleans | Condition-prefixed `snake_case` (`is_loading`, `has_access`) |
 | Conceptual constants | `UPPER_SNAKE_CASE` (`MAX_UPLOAD_SIZE`) |
 | Hooks | Standard React `use...` names in kebab-case files (`use-invoice-filter.ts`) |
+| Callback props | `onXxx` (`onSubmit`, `onSelect`) |
 
 Use framework-required filenames exactly as required (`page.tsx`, `layout.tsx`, `error.tsx`, and so on). Do not rename external API payload fields merely to satisfy local style; map them at the boundary.
 
 Existing starter code may predate these naming conventions. New and touched application-owned code follows `snake_case` for variables and internal object keys; a naming-only migration is not required unless the task calls for it.
+
+Name internal event handlers for the work they handle (`handleSubmit`) and callback props for the event they expose (`onSubmit`). Prefer type aliases; use interfaces only when declaration merging or extension semantics materially help. Prefer named exports; use default exports only where a framework requires them. Do not add an `Async` suffix solely because a function returns a Promise.
 
 ## Imports, modules, and dependencies
 
@@ -43,7 +47,7 @@ Do not promote local state to Zustand, or URL state to a global store, for conve
 ## Data, validation, and errors
 
 - Put UI orchestration in components/hooks, business rules in services, persistence in repositories, and mutation entry points in actions.
-- Validate at every untrusted boundary with Zod. Parse before a service performs work; server actions must authenticate and authorize themselves when the feature has access control.
+- When Zod is directly installed and adopted, validate untrusted boundaries with its schemas: form input, URLs, server actions, route handlers, webhooks, and external responses. Parse before a service performs work; server actions must authenticate and authorize themselves when the feature has access control.
 - Return or render user-safe, actionable errors. Preserve technical causes for observability without leaking secrets or implementation details.
 - Use Next route error boundaries for unexpected rendering failures and predictable validation states for expected user mistakes. Handle loading, empty, error, and success states intentionally.
 
@@ -53,6 +57,12 @@ Do not promote local state to Zustand, or URL state to a global store, for conve
 - Remove dead code, obsolete comments, unused exports, and abandoned TODOs in the same change. Do not keep commented-out code.
 - Keep mocks deterministic, feature-owned, and clearly separate from production adapters. Mocks must model useful scenarios rather than silently becoming a second data source.
 - Refactor when it makes a current change simpler, safer, or clearer. Do not perform unrelated rewrites or introduce abstractions for hypothetical reuse.
+
+## Environment and secrets
+
+- Validate required environment values where server configuration enters the application; treat runtime configuration as untrusted input and fail clearly when required configuration is missing.
+- Never commit private secrets or expose them to the client. Keep server-only values and provider SDKs on the server; client-visible values require intentional exposure.
+- When a product introduces environment variables, maintain `.env.example` with variable names and safe placeholders only. Reuse Zod for configuration validation when it is directly installed and adopted; do not build environment infrastructure before the product needs it.
 
 ## Testing and Definition of Done
 
