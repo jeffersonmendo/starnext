@@ -55,6 +55,8 @@ Dependencies point inward: `app → features → shared/lib/config → external 
 
 Data flows down through typed props. Events and actions flow up through callbacks or explicit action boundaries. Server components fetch/compose and pass the minimum serializable view data to client components. Keep browser-only behavior behind the smallest possible `"use client"` boundary.
 
+For data flow, server-side reads normally follow `Server Component/application boundary → optional service → optional repository/provider adapter`. Mutations follow `UI/form → feature-owned Server Action → optional service → optional repository/provider adapter`; use a Route Handler instead when the mutation serves an external or public boundary. Route Handlers may also serve webhooks, public APIs, and legitimate client-initiated reads such as polling, autocomplete, infinite scroll, interactive search, realtime, or browser uploads. Client Components never import repositories, server-only services, or secret-bearing provider SDKs; their requests go through an application-controlled boundary, never directly to private provider APIs. Every layer is optional when it has no meaningful responsibility.
+
 ## External boundaries
 
 Repositories isolate database or remote persistence details. Services coordinate business rules. Actions and route handlers validate input, authenticate and authorize where applicable, call a service, and return a deliberate result. Provider SDKs (Stripe payments, Resend email, storage, analytics) stay behind adapters in `lib` or a feature repository/service; do not spread SDK calls through components.

@@ -51,6 +51,61 @@ Do not promote local state to Zustand, or URL state to a global store, for conve
 - Return or render user-safe, actionable errors. Preserve technical causes for observability without leaking secrets or implementation details.
 - Use Next route error boundaries for unexpected rendering failures and predictable validation states for expected user mistakes. Handle loading, empty, error, and success states intentionally.
 
+### Application response contract
+
+When an application-controlled boundary returns a structured result to UI or external clients, use a consistent `AppResponse<T>` contract. This is appropriate for Server Actions, Route Handlers, and similar boundaries; repositories, helpers, and domain logic must not universally return HTTP-shaped responses.
+
+```ts
+type AppResponse<T> =
+  | {
+      success: true;
+      data: T;
+      error?: never;
+      message?: string;
+      code?: string;
+      status?: number;
+    }
+  | {
+      success: false;
+      data?: never;
+      error?: { details?: unknown };
+      message: string;
+      code: string;
+      status?: number;
+    };
+```
+
+`success` is the outcome. `code` is stable and machine-readable; UI and application logic branch on it, never on `message`. `message` is human-facing and localizable. `status` represents transport status where a transport applies. `data` holds successful results, while `error.details` is optional and safe for the recipient.
+
+```json
+{
+  "success": true,
+  "data": {
+    "project_id": "prj_123",
+    "created_at": "2026-09-01T12:00:00Z"
+  },
+  "message": "Project created.",
+  "code": "PROJECT_CREATED",
+  "status": 201
+}
+```
+
+```json
+{
+  "success": false,
+  "error": {
+    "details": {
+      "field": "project_name"
+    }
+  },
+  "message": "A project with this name already exists.",
+  "code": "PROJECT_NAME_TAKEN",
+  "status": 409
+}
+```
+
+Never include stack traces, database or provider internals, credentials, or secrets in `error.details`. Keep internal detail server-side and log it only when observability is configured.
+
 ## Comments, mocks, and maintenance
 
 - Write comments only for non-obvious intent, constraints, or tradeoffs. Do not narrate self-evident code.
