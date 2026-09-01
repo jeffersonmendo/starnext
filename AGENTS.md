@@ -28,11 +28,11 @@ Detailed rules live in the linked documents; these summaries are mandatory.
 
 - Search and reuse existing features, primitives, helpers, and package capabilities before creating anything. For UI, reuse existing shadcn/Base UI primitives, compose them, then add a needed primitive before custom markup.
 - Keep helpers pure and feature-local by default. Promote them to `shared` or `lib` only after real cross-feature reuse; extract only when it removes repeated, stable responsibility. Never create a catch-all helpers directory.
-- Use React local state for component interaction, nuqs for URL state, and Zustand only for genuine global client state. Do not put derived or URL state in stores.
+- Use React local state for component interaction; when directly installed, use nuqs for URL state and Zustand only for genuine global client state. Do not put derived or URL state in stores.
 
 ### Stack and environment
 
-- Follow the standard stack in [Stack](docs/stack.md): Zod runtime validation when installed, Stripe when payments are needed, and Resend when email is needed. Add standards only when the product requires them.
+- Follow the standard stack in [Stack](docs/stack.md): Zod runtime validation when directly installed and adopted, Stripe when payments are needed, and Resend when email is needed. Add standards only when the product requires them.
 - Validate required environment values at the server boundary. Treat runtime configuration as untrusted; never commit or expose private secrets. Keep server-only values and provider SDKs on the server, expose client values intentionally, and fail clearly for missing required configuration. When a product introduces environment variables, maintain `.env.example` with variable names and safe placeholders only; do not build environment infrastructure before the product needs it.
 
 ### Pre-task checklist

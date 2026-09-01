@@ -39,8 +39,8 @@ State ownership is deliberate:
 | State | Owner |
 | --- | --- |
 | Ephemeral component interaction | React local state (`useState`, reducer when justified) |
-| Shareable, navigable filters or view state | `nuqs` URL state |
-| Cross-feature client state with a real global owner | Zustand |
+| Shareable, navigable filters or view state | `nuqs` URL state (when directly installed) |
+| Cross-feature client state with a real global owner | Zustand (when directly installed) |
 
 Do not promote local state to Zustand, or URL state to a global store, for convenience. Derive values during render instead of storing duplicate state.
 

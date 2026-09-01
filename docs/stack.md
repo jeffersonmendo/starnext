@@ -26,13 +26,13 @@ Use Bun. The only current scripts are `dev`, `build`, `start`, `lint`, and `form
 | TypeScript | Static contracts | Public props, domain data, adapter boundaries | Runtime validation | JavaScript is not the standard |
 | Tailwind CSS | Token-based styling | Layout and semantic design tokens | Domain logic or one-off raw color systems | CSS modules only when a product case clearly needs them |
 | shadcn/ui | Source-owned, accessible UI primitives | Reusable controls and composed interface patterns | Feature/domain components in `components/ui` | Build a primitive only after verifying shadcn does not fit |
-| Zod | Runtime schemas when installed | Forms, actions, URLs, webhooks, external data | Replacing domain behavior or client-only trust | Valibot only by explicit product decision |
+| Zod | Runtime schemas when directly installed and adopted | Forms, actions, URLs, webhooks, external data | Replacing domain behavior or client-only trust | Valibot only by explicit product decision |
 | Zustand | Minimal global client state when added | Genuine cross-feature client state | React local state, server data, or nuqs URL state | React context for small, static dependency injection |
 | nuqs | Typed URL state when added | Filters, sorting, pagination, shareable views | Hidden or ephemeral component state | Next search params for simple server-only reads |
 | Stripe | Default payments boundary when payments are required | Product billing and payment workflows | General persistence or entitlement logic spread through UI | Another provider only by an explicit product decision |
 | Resend | Default transactional email boundary when email is required | Product emails through an adapter | UI notifications or business rules | Another provider only by an explicit product decision |
 
-Zod is **not a direct application dependency** in `package.json`; it may be present transitively for tooling. Zustand, nuqs, Stripe, and Resend are **not direct dependencies** and are absent from `bun.lock`. Add each only when the product needs it: use Zod for runtime validation once installed, React local state for component state, nuqs for URL state, Zustand for genuine global client state, Stripe for payments, and Resend for transactional email. Isolate provider SDKs behind a feature service or repository.
+Zod is **not a direct application dependency** in `package.json`; it may be present transitively for tooling. Zustand, nuqs, Stripe, and Resend are **not direct dependencies** and are absent from `bun.lock`. Add each only when the product needs it: use Zod for runtime validation once it is directly installed and adopted, React local state for component state, nuqs for URL state, Zustand for genuine global client state, Stripe for payments, and Resend for transactional email. Isolate provider SDKs behind a feature service or repository.
 
 ## Project-specific decisions
 

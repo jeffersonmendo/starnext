@@ -28,7 +28,7 @@ src/features/<feature>/
   helpers/          # Pure feature-local utilities
   services/        # Use cases and application rules
   repositories/    # Data-source contracts/adapters
-  schemas/         # Input and boundary schemas (Zod when installed)
+  schemas/         # Input and boundary schemas (Zod when directly installed and adopted)
   types/           # Feature-owned domain/view types
   constants/       # Feature concepts with stable names
   mocks/           # Deterministic feature fixtures/fakes
