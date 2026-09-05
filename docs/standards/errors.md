@@ -1,6 +1,6 @@
 # Errors
 
-This document defines how errors should be represented, propagated, translated, and exposed in Starnext projects.
+This document defines how errors should be represented, propagated, translated, and exposed in this project.
 
 The goal is to make failures predictable without coupling internal application logic to HTTP responses, UI messages, database errors, or external providers.
 
@@ -139,7 +139,7 @@ This keeps internal logic independent from HTTP and UI concerns.
 
 When an application boundary needs a structured response, use a predictable contract.
 
-A default Starnext response may follow:
+A default project response may follow:
 
 ```ts
 type AppResponse<T> =

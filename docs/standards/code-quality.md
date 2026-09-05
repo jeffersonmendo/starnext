@@ -1,6 +1,6 @@
 # Code Quality
 
-This document defines the general code-quality principles for Starnext projects.
+This document defines the general code-quality principles for this project.
 
 The goal is to produce code that is understandable, maintainable, and easy to change without introducing unnecessary abstractions or complexity.
 

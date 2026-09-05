@@ -1,6 +1,6 @@
 # TypeScript
 
-This document defines how TypeScript should be used across Starnext projects.
+This document defines how TypeScript should be used in this project.
 
 The goal is to use the type system to make application contracts explicit, prevent invalid states where practical, and improve refactoring without creating unnecessary type complexity.
 

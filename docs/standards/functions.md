@@ -1,6 +1,6 @@
 # Functions
 
-This document defines how functions should be designed and organized in Starnext projects.
+This document defines how functions should be designed and organized in this project.
 
 Functions should communicate intent, have cohesive responsibilities, and make side effects easy to identify.
 

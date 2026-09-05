@@ -1,6 +1,6 @@
 # Modules
 
-This document defines how modules and feature boundaries should be organized in Starnext projects.
+This document defines how modules and feature boundaries should be organized in this project.
 
 The goal is to keep features cohesive, reduce accidental coupling, and make dependencies between parts of the application easy to understand.
 

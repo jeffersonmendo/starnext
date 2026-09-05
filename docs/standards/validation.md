@@ -1,6 +1,6 @@
 # Validation
 
-This document defines how runtime validation should be handled in Starnext projects.
+This document defines how runtime validation should be handled in this project.
 
 The goal is to validate data when it enters a trusted application boundary, keep invalid external data from spreading internally, and avoid unnecessary repeated validation.
 

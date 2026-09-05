@@ -1,6 +1,6 @@
 # Testing
 
-This document defines how testing should be approached in Starnext projects.
+This document defines how testing should be approached in this project.
 
 The goal is to protect important behavior, business rules, and application boundaries while keeping tests maintainable and proportional to the risk of the code.
 

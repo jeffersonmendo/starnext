@@ -1,16 +1,16 @@
 # Architecture
 
-This document defines the architectural principles used across projects built from Starnext.
+This document defines the architectural principles used in this project.
 
 The goal is not to impose a large or rigid architecture on every application. The goal is to establish **clear responsibilities, predictable dependency boundaries, and consistent organization** so applications can grow without turning into tightly coupled systems.
 
-Project-specific architecture belongs in [`../project/architecture.md`](../project/architecture.md).
+Project-specific architecture belongs in the [product documentation](../product/README.md).
 
 ---
 
 ## 1. Architectural Philosophy
 
-Starnext favors architecture that is:
+This project favors architecture that is:
 
 - simple enough for the current problem
 - explicit about responsibilities
@@ -33,7 +33,7 @@ A project should introduce a boundary, abstraction, layer, service, repository, 
 
 ## 2. Architecture Is Not a Fixed Folder Tree
 
-Starnext does not require every project to contain the same architectural layers.
+This project does not require every application to contain the same architectural layers.
 
 Different products have different needs.
 
@@ -77,7 +77,7 @@ with independent registries for extensible capabilities.
 
 The project architecture MUST be documented in:
 
-`/docs/project/architecture.md`
+`/docs/product/architecture.md`
 
 The standards define **how architectural decisions should be made**.
 
@@ -285,7 +285,7 @@ Examples:
 
 This coordination may live in an application service, action, use case, or equivalent project-specific boundary.
 
-Starnext does not require one particular naming convention for this architectural role unless another standard defines it.
+This project does not require one particular naming convention for this architectural role unless another standard defines it.
 
 Avoid creating multiple coordination layers that merely forward the same parameters:
 
@@ -563,7 +563,7 @@ tool-registry
 
 over a global registry containing unrelated application capabilities.
 
-Project-specific registry architecture belongs in `/docs/project/architecture.md`.
+Project-specific registry architecture belongs in `/docs/product/architecture.md`.
 
 ---
 
@@ -801,9 +801,9 @@ Measure it by whether the system is:
 
 ## 27. Project Architecture Requirement
 
-Every serious project created from Starnext should document its actual architecture in:
+This project should document its actual architecture in:
 
-`/docs/project/architecture.md`
+`/docs/product/architecture.md`
 
 That document should describe:
 

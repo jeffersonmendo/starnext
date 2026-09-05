@@ -1,6 +1,6 @@
 # Imports
 
-This document defines how imports should be organized in Starnext projects.
+This document defines how imports should be organized in this project.
 
 The goal is to keep dependencies explicit, preserve module boundaries, make files easy to move and understand, and prevent implementation details from leaking across features.
 

@@ -1,6 +1,6 @@
 # Project Structure
 
-This document defines how application code should be organized in Starnext projects.
+This document defines how application code should be organized in this project.
 
 The goal is to make file placement predictable. When creating new code, a developer should be able to determine where it belongs based on **ownership and responsibility**, not personal preference.
 

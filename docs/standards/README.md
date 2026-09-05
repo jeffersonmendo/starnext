@@ -1,6 +1,6 @@
 # Engineering Standards
 
-This directory contains the reusable engineering standards used across Starnext projects.
+This directory contains the reusable engineering standards for this project.
 
 These documents define **how software should be designed, organized, and maintained**.
 

@@ -1,6 +1,6 @@
 # Server and Client
 
-This document defines how server-side and client-side responsibilities should be separated in Starnext projects.
+This document defines how server-side and client-side responsibilities should be separated in this project.
 
 The goal is to keep server capabilities protected, client code focused on interaction, and boundaries easy to understand.
 

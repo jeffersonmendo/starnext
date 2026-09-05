@@ -1,6 +1,6 @@
 # Data Access
 
-This document defines how Starnext applications access databases, external APIs, storage systems, and other persistence infrastructure.
+This document defines how this project accesses databases, external APIs, storage systems, and other persistence infrastructure.
 
 The goal is to prevent infrastructure details from spreading through the application while keeping simple operations simple.
 

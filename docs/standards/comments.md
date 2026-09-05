@@ -1,6 +1,6 @@
 # Comments
 
-This document defines how comments should be written and maintained in Starnext projects.
+This document defines how comments should be written and maintained in this project.
 
 Comments exist to preserve context that cannot be communicated clearly enough through code, naming, types, or structure alone.
 

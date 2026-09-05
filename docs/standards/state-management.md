@@ -1,6 +1,6 @@
 # State Management
 
-This document defines how state should be owned and managed in Starnext projects.
+This document defines how state should be owned and managed in this project.
 
 The goal is to keep state as close as possible to its real owner and avoid introducing global client state when simpler mechanisms already represent the data correctly.
 
@@ -226,7 +226,7 @@ Do not place feature-specific state in a global application store without a real
 
 ## 7. Use Zustand When Shared Client State Justifies It
 
-Zustand is the preferred general-purpose store when Starnext projects require shared client state.
+Zustand is the preferred general-purpose store when this project requires shared client state.
 
 Use it when:
 

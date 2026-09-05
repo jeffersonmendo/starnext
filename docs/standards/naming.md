@@ -1,6 +1,6 @@
 # Naming
 
-This document defines naming conventions for Starnext projects.
+This document defines naming conventions for this project.
 
 Names should communicate **purpose and responsibility** without requiring developers to inspect the implementation.
 

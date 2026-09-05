@@ -1,6 +1,6 @@
 # Components
 
-This document defines how React components should be structured and used in Starnext projects.
+This document defines how React components should be structured and used in this project.
 
 The goal is to keep UI predictable, reusable, and decoupled from business and infrastructure concerns.
 
