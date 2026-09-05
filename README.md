@@ -7,8 +7,12 @@ A fast, opinionated Next.js starter for your next application.
 ```bash
 git clone https://github.com/jeffersonmendo/starnext.git <app-name>
 cd <app-name>
+rm -rf .git
+git init
 bun install
 bun update --latest
+git add .
+git commit -m "chore: initialize project"
 bun dev
 ```
 
