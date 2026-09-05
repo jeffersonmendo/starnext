@@ -1,11 +1,11 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
-const nextConfig: NextConfig = {
+const next_config: NextConfig = {
   /* config options here */
   reactCompiler: true,
 };
 
-const withNextIntl = createNextIntlPlugin();
+const with_next_intl = createNextIntlPlugin();
 
-export default withNextIntl(nextConfig);
+export default with_next_intl(next_config);

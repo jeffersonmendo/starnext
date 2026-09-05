@@ -1,4 +1,4 @@
-# Starnext — Agent Guide
+# Agent Guide
 
 When working on this project, read the relevant documentation and skills **before writing code**.
 

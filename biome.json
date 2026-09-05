@@ -28,6 +28,49 @@
       "recommended": true,
       "suspicious": {
         "noUnknownAtRules": "off"
+      },
+      "style": {
+        "useFilenamingConvention": {
+          "level": "error",
+          "options": {
+            "filenameCases": ["kebab-case"],
+            "requireAscii": true,
+            "strictCase": true
+          }
+        },
+        "useNamingConvention": {
+          "level": "error",
+          "options": {
+            "requireAscii": true,
+            "strictCase": true,
+            "conventions": [
+              {
+                "selector": {
+                  "kind": "typeLike"
+                },
+                "formats": ["PascalCase"]
+              },
+              {
+                "selector": {
+                  "kind": "function"
+                },
+                "formats": ["camelCase", "PascalCase"]
+              },
+              {
+                "selector": {
+                  "kind": "variable"
+                },
+                "formats": ["snake_case", "CONSTANT_CASE"]
+              },
+              {
+                "selector": {
+                  "kind": "functionParameter"
+                },
+                "formats": ["snake_case"]
+              }
+            ]
+          }
+        }
       }
     },
     "domains": {
@@ -35,6 +78,18 @@
       "react": "recommended"
     }
   },
+  "overrides": [
+    {
+      "includes": ["src/components/ui/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useNamingConvention": "off"
+          }
+        }
+      }
+    }
+  ],
   "assist": {
     "actions": {
       "source": {

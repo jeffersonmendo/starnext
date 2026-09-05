@@ -13,7 +13,7 @@ export default async function Home({ params }: Props) {
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: "Home" });
-  const next_locale =
+  const nextLocale =
     routing.locales.find((candidate) => candidate !== locale) ??
     routing.defaultLocale;
 
@@ -36,7 +36,7 @@ export default async function Home({ params }: Props) {
         </a>
         <Link
           href="/"
-          locale={next_locale}
+          locale={nextLocale}
           className={buttonVariants({ variant: "secondary" })}
         >
           {t("switch_locale")}
