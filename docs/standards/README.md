@@ -84,7 +84,7 @@ Before implementing a meaningful change, developers and coding agents should:
 1. Read this document.
 2. Identify which standards apply to the task.
 3. Read those standards.
-4. Read `/docs/project/README.md`.
+4. Read `/docs/product/README.md`.
 5. Read the relevant project-specific documentation.
 6. Review relevant installed skills.
 7. Inspect existing code for established patterns.
@@ -533,7 +533,7 @@ Runtime input should be validated at trust boundaries.
 
 ---
 
-## `/docs/project`
+## `/docs/product`
 
 Defines:
 
@@ -552,7 +552,7 @@ Which business rules exist.
 
 A new project description must **not overwrite engineering standards**.
 
-Project-specific information belongs in `/docs/project`.
+Project-specific information belongs in `/docs/product`.
 
 ---
 
@@ -565,7 +565,7 @@ That does not automatically mean the standard should change.
 Document intentional exceptions in:
 
 ```text
-/docs/project/decisions.md
+/docs/product/decisions.md
 ```
 
 A decision should explain:
