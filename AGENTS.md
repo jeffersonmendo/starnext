@@ -47,6 +47,7 @@ Load relevant skills before coding:
 - [React](./.agents/skills/vercel-react-best-practices/SKILL.md)
 - [TypeScript](./.agents/skills/typescript-advanced-types/SKILL.md)
 - [shadcn/ui](./.agents/skills/shadcn/SKILL.md)
+- [next-intl i18n](./.agents/skills/web-i18n-next-intl/SKILL.md) — load for Next.js App Router internationalization work.
 
 Check `.agents/skills/` for additional skills.
 

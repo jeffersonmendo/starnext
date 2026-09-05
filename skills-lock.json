@@ -24,6 +24,12 @@
       "sourceType": "github",
       "skillPath": "skills/react-best-practices/SKILL.md",
       "computedHash": "ca7b0c0c6e5f2750043f7f0cd72d16ac4e2abc48f9b5500d047a4b77a2506212"
+    },
+    "web-i18n-next-intl": {
+      "source": "agents-inc/skills",
+      "sourceType": "github",
+      "skillPath": "src/skills/web-i18n-next-intl/SKILL.md",
+      "computedHash": "8a74fe0ce0d23968f3570757383ba0d3b320efb613940d5f23097483be4a91e9"
     }
   }
 }
