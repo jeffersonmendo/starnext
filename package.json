@@ -11,7 +11,12 @@
     "typecheck": "tsc --noEmit",
     "format": "biome format --write",
     "format:check": "biome format",
+    "check": "bun run lint && bun run typecheck",
+    "check:all": "bun run check && bun run build",
     "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs,mts,cts,json,jsonc,css}": "biome check --write"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -35,6 +40,7 @@
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "husky": "^9.1.7",
+    "lint-staged": "^17.5.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
