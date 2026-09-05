@@ -84,13 +84,12 @@ Do not modify engineering standards to solve a product-specific requirement.
 
 When a skill matches the current task, read its `SKILL.md` before implementing.
 
-| Skill        | When to use                                                                                             | Path                                                                         |
-| ------------ | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| Next.js      | When working with Next.js routing, rendering, data fetching, server/client behavior, or framework APIs. | [`.agents/skills/nextjs/SKILL.md`](./.agents/skills/nextjs/SKILL.md)         |
-| React        | When working with React components, hooks, composition, state, or rendering behavior.                   | [`.agents/skills/react/SKILL.md`](./.agents/skills/react/SKILL.md)           |
-| TypeScript   | When working with advanced typing, generics, contracts, narrowing, or type-level design.                | [`.agents/skills/typescript/SKILL.md`](./.agents/skills/typescript/SKILL.md) |
-| shadcn/ui    | When creating or modifying UI using shadcn/ui components and patterns.                                  | [`.agents/skills/shadcn/SKILL.md`](./.agents/skills/shadcn/SKILL.md)         |
-| Tailwind CSS | When working with Tailwind utilities, layout, responsive behavior, or styling conventions.              | [`.agents/skills/tailwind/SKILL.md`](./.agents/skills/tailwind/SKILL.md)     |
+| Skill      | When to use                                                                                             | Path                                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Next.js    | When working with Next.js routing, rendering, data fetching, server/client behavior, or framework APIs. | [`.agents/skills/next-best-practices/SKILL.md`](./.agents/skills/next-best-practices/SKILL.md)                 |
+| React      | When working with React components, hooks, composition, state, or rendering behavior.                   | [`.agents/skills/vercel-react-best-practices/SKILL.md`](./.agents/skills/vercel-react-best-practices/SKILL.md) |
+| TypeScript | When working with advanced typing, generics, contracts, narrowing, or type-level design.                | [`.agents/skills/typescript-advanced-types/SKILL.md`](./.agents/skills/typescript-advanced-types/SKILL.md)     |
+| shadcn/ui  | When creating or modifying UI using shadcn/ui components and patterns.                                  | [`.agents/skills/shadcn/SKILL.md`](./.agents/skills/shadcn/SKILL.md)                                           |
 
 Additional skills may be added as the project evolves.
 
