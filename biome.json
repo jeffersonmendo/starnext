@@ -81,6 +81,9 @@
   "overrides": [
     {
       "includes": ["src/components/ui/**"],
+      "formatter": {
+        "enabled": false
+      },
       "linter": {
         "rules": {
           "style": {
