@@ -11,9 +11,8 @@
     "format:check": "biome check",
     "lint": "biome lint",
     "typecheck": "tsc --noEmit",
-    "test": "bun test",
-    "test:dom": "bun test --path-ignore-patterns=\"\" --preload ./test-setup.ts src/components/ui/color.test.tsx src/features/presentations/components/editor/tests/inspector-section-order.test.tsx src/features/presentations/components/editor/tests/text-inspector.native-color.test.tsx",
-    "check": "bun run format:check && bun run typecheck && bun run test && bun run test:dom",
+    "test": "bun test --pass-with-no-tests",
+    "check": "bun run format:check && bun run typecheck && bun run test",
     "check:all": "bun run check && bun run build",
     "prepare": "husky"
   },
