@@ -44,23 +44,18 @@ Example:
 
 ```tsx id="3u1l4u"
 type UserCardProps = {
-  user: User
-  onDelete: (id: string) => void
-}
+  user: User;
+  onDelete: (id: string) => void;
+};
 
-export function UserCard({
-  user,
-  onDelete,
-}: UserCardProps) {
+export function UserCard({ user, onDelete }: UserCardProps) {
   return (
     <article>
       <h2>{user.name}</h2>
 
-      <button onClick={() => onDelete(user.id)}>
-        Delete
-      </button>
+      <button onClick={() => onDelete(user.id)}>Delete</button>
     </article>
-  )
+  );
 }
 ```
 
@@ -76,14 +71,10 @@ Avoid:
 ```tsx id="dlkdjp"
 export function UserCard({ user }: UserCardProps) {
   async function handleDelete() {
-    await database.users.delete(user.id)
+    await database.users.delete(user.id);
   }
 
-  return (
-    <button onClick={handleDelete}>
-      Delete
-    </button>
-  )
+  return <button onClick={handleDelete}>Delete</button>;
 }
 ```
 
@@ -215,16 +206,16 @@ Components may contain presentation logic.
 Examples:
 
 ```ts id="s5io4a"
-const is_empty = items.length === 0
-const is_selected = selected_id === item.id
+const is_empty = items.length === 0;
+const is_selected = selected_id === item.id;
 ```
 
 This is different from product behavior such as:
 
 ```ts id="ipsp0g"
-calculateSubscriptionPrice()
-canUserDeleteWorkspace()
-applyOrderDiscount()
+calculateSubscriptionPrice();
+canUserDeleteWorkspace();
+applyOrderDiscount();
 ```
 
 Business rules should live outside the component when they represent behavior that matters independently of the UI.
@@ -260,7 +251,7 @@ UI components should not directly communicate with:
 Avoid:
 
 ```tsx id="b50i5g"
-await supabase.from("projects").delete()
+await supabase.from("projects").delete();
 ```
 
 inside reusable UI.
@@ -300,9 +291,9 @@ Hooks are appropriate for reusable client-side behavior.
 Examples:
 
 ```ts id="8854vj"
-useSelection()
-useEditorKeyboard()
-useResponsiveLayout()
+useSelection();
+useEditorKeyboard();
+useResponsiveLayout();
 ```
 
 A hook may coordinate:
@@ -364,21 +355,124 @@ Props should represent the component's public API.
 Prefer specific props:
 
 ```tsx id="zyjih3"
-<UserCard
-  user={user}
-  isSelected={is_selected}
-  onSelect={handleSelect}
-/>
+<UserCard user={user} isSelected={is_selected} onSelect={handleSelect} />
+```
+
+### Props Are Not a Translation Forwarding Mechanism
+
+Use props for domain data, callbacks, dynamic values used as translation arguments, and genuine configurable content contracts on reusable components.
+
+Resolve static localized UI copy at the component presentation boundary with `next-intl`. Do not pass translated labels through props merely to forward them to a feature-specific descendant.
+
+Avoid:
+
+```tsx
+"use client";
+
+import { useTranslations } from "next-intl";
+
+type EditorActionsProps = {
+  onSave: () => void;
+  onCancel: () => void;
+};
+
+export function EditorActions({ onSave, onCancel }: EditorActionsProps) {
+  const t = useTranslations("editor");
+
+  return (
+    <EditorActionButtons
+      saveLabel={t("save")}
+      cancelLabel={t("cancel")}
+      onSave={onSave}
+      onCancel={onCancel}
+    />
+  );
+}
+
+type EditorActionButtonsProps = {
+  saveLabel: string;
+  cancelLabel: string;
+  onSave: () => void;
+  onCancel: () => void;
+};
+
+function EditorActionButtons({
+  saveLabel,
+  cancelLabel,
+  onSave,
+  onCancel,
+}: EditorActionButtonsProps) {
+  return (
+    <div>
+      <button onClick={onSave}>{saveLabel}</button>
+      <button onClick={onCancel}>{cancelLabel}</button>
+    </div>
+  );
+}
+```
+
+Prefer:
+
+```tsx
+"use client";
+
+import { useTranslations } from "next-intl";
+
+type EditorActionButtonsProps = {
+  itemCount: number;
+  onSave: () => void;
+  onCancel: () => void;
+};
+
+export function EditorActionButtons({
+  itemCount,
+  onSave,
+  onCancel,
+}: EditorActionButtonsProps) {
+  const t = useTranslations("editor");
+
+  return (
+    <div>
+      <p>{t("selected_items", { count: itemCount })}</p>
+      <button onClick={onSave}>{t("save")}</button>
+      <button onClick={onCancel}>{t("cancel")}</button>
+    </div>
+  );
+}
+```
+
+Passing content is valid when it is a genuine configuration contract for a generic reusable primitive:
+
+```tsx
+"use client";
+
+import type { ReactNode } from "react";
+import { useTranslations } from "next-intl";
+
+type ConfirmButtonProps = {
+  label: ReactNode;
+  onConfirm: () => void;
+};
+
+export function ConfirmButton({ label, onConfirm }: ConfirmButtonProps) {
+  return <button onClick={onConfirm}>{label}</button>;
+}
+
+type DeleteWorkspaceControlProps = {
+  onDelete: () => void;
+};
+
+function DeleteWorkspaceControl({ onDelete }: DeleteWorkspaceControlProps) {
+  const t = useTranslations("workspaces");
+
+  return <ConfirmButton label={t("delete")} onConfirm={onDelete} />;
+}
 ```
 
 Avoid passing infrastructure objects or unrelated application context through UI components:
 
 ```tsx id="rx8nb5"
-<UserCard
-  database={database}
-  stripe={stripe}
-  repository={repository}
-/>
+<UserCard database={database} stripe={stripe} repository={repository} />
 ```
 
 unless the component itself genuinely owns that architectural responsibility, which ordinary UI components usually should not.
